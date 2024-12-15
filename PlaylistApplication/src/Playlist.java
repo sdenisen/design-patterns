@@ -10,25 +10,27 @@ public class Playlist implements IComponent {
 
     @Override
     public void play() {
-
+        this.playlist.forEach(IComponent::play);
     }
 
     @Override
     public void setPlaybackSpeed(float speed) {
-
+        for (IComponent song : this.playlist) {
+            song.setPlaybackSpeed(speed);
+        }
     }
 
     @Override
     public String getName() {
-        return "";
+        return this.playlistName;
     }
 
-    public void add(IComponent component){
-
+    public void add(IComponent component) {
+        this.playlist.add(component);
     }
 
-    public void remove(IComponent component){
-
+    public void remove(IComponent component) {
+        this.playlist.remove(component);
     }
     // Your code goes here!
 }

@@ -10,20 +10,27 @@ public class Song implements IComponent {
 
     @Override
     public void play() {
-
+        int song_length_ms = (int) (Math.random() * 3000);
+        System.out.println("playing the song: " + this.songName + ", artist: " + this.artist +
+                "speed: " + this.speed + " length: " + song_length_ms);
+        try {
+            Thread.sleep(song_length_ms);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
     }
 
     @Override
     public void setPlaybackSpeed(float speed) {
-
+        this.speed = speed;
     }
 
     @Override
     public String getName() {
-        return "";
+        return this.songName;
     }
 
-    public String getArtist(){
+    public String getArtist() {
         return this.songName;
     }
 
